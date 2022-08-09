@@ -1,4 +1,5 @@
 /**
+ * !Задание № 3
  * Используй массив объектов images для создания элементов <img> вложенных в <li>. Для создания разметки используй шаблонные строки и метод insertAdjacentHTML().
  * Все элементы галереи должны добавляться в DOM за одну операцию вставки.
  * Добавь минимальное оформление галереи флексбоксами или гридами через CSS классы.
@@ -18,26 +19,46 @@ const images = [
   },
 ];
 
-const galleryCountainerEl = document.querySelector('.gallery');
-galleryCountainerEl.classList.add('grid');
+const gallery = document.querySelector('.gallery');
+gallery.style.display = "flex";
+gallery.style.justifyContent = "space-between";
+gallery.style.listStyle = "none";
+gallery.style.margin = "0";
+gallery.style.padding = "0";
+
+const markup = images
+  .map(({ url, alt }) =>
+    `<li class="item">
+    <img class="image" src = '${url}' alt = '${alt}' width="280" height="160"></img>
+    </li>`)
+    .join("");
+
+gallery.insertAdjacentHTML('afterbegin', markup);
+
+console.log(gallery);
+
+//v.2 Create Element
+// const galleryCountainerEl = document.querySelector('.gallery');
+// galleryCountainerEl.classList.add('grid');
+
+// const makeItem = ({ url, alt }) => {
+//     const itemEl = document.createElement('li');
+//     itemEl.classList.add('item');
+    
+//     const image = document.createElement('img');
+//     image.classList.add('image');
+//     image.src = url;
+//     image.alt = alt;
+//     image.width = 320;
+    
+//     itemEl.append(image);
 
 
-const itemEl = document.createElement('li');
-itemEl.classList.add('item');
+//     return itemEl;
+//  }
 
-const image = document.createElement('img');
-image.classList.add('image');
-// image.src = imageLink;
-// image.alt = imageAlt;
+// const items = images.map(makeItem);
 
-itemEl.append(image);
+// galleryCountainerEl.append(...items);
 
-// itemEl.insertAdjacentElement('afterbegin', 'gallery');
-
-console.log(itemEl);
-
-// const elements = images.map(({ imageLink, imageAlt }) => { 
-
-// })
-
-// itemEl.insertAdjacentElement('afterbegin', 'image');
+// console.log(galleryCountainerEl);
