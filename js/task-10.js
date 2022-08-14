@@ -13,4 +13,61 @@ function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 }
 
-const numberEl = document.querySelector('#controls' < );
+
+const numberEl = document.querySelector('input');
+console.log(numberEl);
+
+const createBtnEl = document.querySelector('[data-create]');
+console.log(createBtnEl);
+
+const destroyBtnEl = document.querySelector('[data-destroy]');
+console.log(destroyBtnEl);
+
+const boxesEl = document.querySelector('#boxes');
+console.log(boxesEl);
+
+
+numberEl.addEventListener('input', onInputClick);
+
+
+function onInputClick(event) { 
+
+  let amount = event.currentTarget.value; 
+  console.log(amount);
+
+  createBtnEl.addEventListener('click', createBoxes);
+  destroyBtnEl.addEventListener('click', onDestroyBtnElClick);
+
+  function createBoxes(amount) { 
+
+    while (amount > 0) { 
+      const divEl = document.createElement('div');
+      divEl.style.backgroundColor = getRandomHexColor();
+      divEl.style.width = '30px';
+      divEl.style.height = '30px';
+    };
+
+    // for (const i of amount.length) {
+    //   console.log(i);
+      
+    // }
+
+    
+    // amount.forEach(element => {
+    //   console.log(element);
+    // }
+    
+    // );
+
+    
+    // boxesEl.insertAdjacentHTML('afterbegin', '<div><div/>');
+  };
+
+function onDestroyBtnElClick() { 
+  boxesEl.innerHTML = '';
+  console.log('div#boxes очищен!')
+  };
+  
+
+};
+
