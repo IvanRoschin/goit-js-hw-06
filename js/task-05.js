@@ -12,10 +12,10 @@ const outputEl = document.querySelector('#name-output');
 
 inputEl.addEventListener('input', onFormInput);
 
-function onFormInput() { 
-    if (!inputEl.value.length) {
+function onFormInput(events) { 
+    if (!events.currentTarget.value.length) {
         outputEl.textContent = 'Anonymous';
     } else { 
-    outputEl.textContent = inputEl.value;
+    outputEl.textContent = events.currentTarget.value;
     }
 };

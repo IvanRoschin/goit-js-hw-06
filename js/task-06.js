@@ -14,16 +14,16 @@ inputEl.addEventListener('blur', onInputBlur);
 function onInputBlur(event) {
 
 
-    if (inputEl.value.length !== Number(event.target.dataset.length)) {
+    if (inputEl.value.length !== Number(event.currentTarget.dataset.length)) {
   
         console.log(`Ошибка, Вы ввели ${inputEl.value.length} символов. 
-        Нужно ввести ${Number(event.target.dataset.length)} симовлов`)
+        Нужно ввести ${Number(event.currentTarget.dataset.length)} симовлов`)
         
         inputEl.classList.add('invalid');
         inputEl.classList.remove('valid');
     }
     else { 
-        console.log(`Все ок, Вы ввели ${inputEl.value.length} из ${Number(event.target.dataset.length)} симовлов - это ровно столько, сколько нужно :)`)
+        console.log(`Все ок, Вы ввели ${inputEl.value.length} из ${Number(event.currentTarget.dataset.length)} симовлов - это ровно столько, сколько нужно :)`)
         inputEl.classList.add('valid');
         inputEl.classList.remove('invalid');
     }

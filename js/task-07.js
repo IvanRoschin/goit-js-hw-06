@@ -1,5 +1,5 @@
 /**
- * !Задание № 6
+ * !Задание № 7
 Напиши скрипт, который реагирует на изменение значения 
 input#font-size-control (событие input) и изменяет
 инлайн-стиль span#text обновляя свойство font-size. 
@@ -8,3 +8,12 @@ input#font-size-control (событие input) и изменяет
  */
 
 const inputEl = document.querySelector('#font-size-control');
+const textEl = document.querySelector('#text');
+
+inputEl.addEventListener('input', onInput);
+
+function onInput(event) { 
+
+    console.dir(event.currentTarget.value); 
+    textEl.style.fontSize = `${event.currentTarget.value}px`;
+};
