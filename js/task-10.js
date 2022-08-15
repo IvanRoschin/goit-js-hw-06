@@ -32,32 +32,38 @@ numberEl.addEventListener('input', onInputClick);
 
 function onInputClick(event) { 
 
-  let amount = event.currentTarget.value; 
+  let amount = Number(event.currentTarget.value); 
   console.log(amount);
 
   createBtnEl.addEventListener('click', createBoxes);
   destroyBtnEl.addEventListener('click', onDestroyBtnElClick);
 
-  function createBoxes(amount) { 
+//! Цикл создания дива
+  function createBoxes(event) { 
+       boxesEl.insertAdjacentHTML('afterbegin', '<div><div/>');
 
-    while (amount > 0) { 
-      const divEl = document.createElement('div');
-      divEl.style.backgroundColor = getRandomHexColor();
-      divEl.style.width = '30px';
-      divEl.style.height = '30px';
-    };
-
-    // for (const i of amount.length) {
-    //   console.log(i);
-      
-    // }
-
+  //   console.log(amount);
     
-    // amount.forEach(element => {
-    //   console.log(element);
-    // }
-    
-    // );
+  //   for (let i = 0; i < amount; i -= 1) {
+  //     console.log(i[0]);
+  // if (amount > 0) {
+  //  boxesEl.insertAdjacentHTML('afterbegin', '<div><div/>');
+  //   continue;
+  // }
+
+  console.log(boxesEl); 
+// }
+    // if (amount > 0) {
+      // console.log(amount);
+      // const divEl = document.createElement('div');
+      // divEl.style.backgroundColor = getRandomHexColor();
+      // divEl.style.width = '30px';
+      // divEl.style.height = '30px';
+      // divEl.appendChild(boxesEl);
+      // boxesEl.insertBefore(divEl, boxesEl.firstElementChild);
+    // };
+
+
 
     
     // boxesEl.insertAdjacentHTML('afterbegin', '<div><div/>');
