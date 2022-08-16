@@ -13,12 +13,6 @@ function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 }
 
-let baseSize = 30;
-
-function changeSize() { 
-  return baseSize += 10;
-}
-
 
 const refs = {
 
@@ -28,9 +22,24 @@ const refs = {
   boxesCountainerEl: document.querySelector('#boxes'),
 }
 
+const baseSizes = 20;
+
+const divMarkcup = () => { 
+  const divEl = document.createElement('div');
+  divEl.style.backgroundColor = getRandomHexColor();
+  divEl.style.width = `${baseSizes} + "px"`;
+  console.log(divEl.style.width);
+  divEl.style.height = `${baseSizes} + "px"`;
+  refs.boxesCountainerEl.append(divEl);
+  console.log(refs.boxesCountainerEl);
+
+  return divEl;
+}
+ 
+
 refs.inputEl.addEventListener('input', onInputClick);
 
-//! Получаем значение количества div
+//! Получаем значение amount
 function onInputClick(event) {
 
   let amount = event.currentTarget.value;
@@ -42,15 +51,7 @@ function onInputClick(event) {
 //! Цикл создания div
   function createBoxes() { 
   for (let i = 1; i <= amount; i += 1) {
-
-    const divEl = document.createElement('div');
-    divEl.style.backgroundColor = getRandomHexColor();
-    divEl.style.width = `${changeSize()} + px`;
-    console.log(`${changeSize()} + "px"`);
-    divEl.style.height = `${changeSize()} + px`;
-    refs.boxesCountainerEl.append(divEl);
-    console.log(refs.boxesCountainerEl);
-    console.log(baseSize);
+    divMarkcup;
     };
   };
     
