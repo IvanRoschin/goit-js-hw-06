@@ -22,12 +22,11 @@ function onFormSubmit(event) {
   } else {
     const mail = elements.email.value;
     const password = elements.password.value;
-
     const formData = {
       mail,
       password,
     };
-    console.log("formData:", formData);
+    console.log(formData);
     return formEl.reset();
   }
 }
