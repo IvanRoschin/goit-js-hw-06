@@ -20,14 +20,17 @@ const refs = {
   boxesCountainerEl: document.querySelector("#boxes"),
 };
 
-const baseSizes = 20;
+let baseSizes = 20;
+let addValue = 10;
 
 refs.inputEl.addEventListener("input", onInputClick);
 
 //! Получаем значение amount
 function onInputClick(event) {
   let amount = event.currentTarget.value;
-  console.log("amount", amount);
+  console.log("Количество дивов -", amount);
+
+  const elements = [];
 
   refs.createBtnEl.addEventListener("click", createBoxes);
   refs.destroyBtnEl.addEventListener("click", onDestroyBtnElClick);
@@ -35,21 +38,25 @@ function onInputClick(event) {
   //! Цикл создания div
   function createBoxes() {
     for (let i = 1; i <= amount; i += 1) {
+      console.log("amount", amount);
+
       const divEl = document.createElement("div");
       divEl.style.backgroundColor = getRandomHexColor();
-      divEl.style.width = `${baseSizes + 10 + "px"}`;
-      console.log(divEl.style.width);
-      divEl.style.height = `${baseSizes + 10 + "px"} `;
-      refs.boxesCountainerEl.append(divEl);
-      console.log(refs.boxesCountainerEl);
+      divEl.style.width = baseSizes + addValue + `px`;
+      divEl.style.height = baseSizes + addValue + `px`;
+      addValue += 10;
+      console.log("width", divEl.style.width);
+      console.log("height", divEl.style.height);
+      elements.push(divEl);
     }
+    refs.boxesCountainerEl.append(...elements);
   }
 
   //! Очищаем div#boxes
   function onDestroyBtnElClick() {
     refs.boxesCountainerEl.innerHTML = "";
     refs.inputEl.value = "";
-    amount = "";
+
     console.log("div#boxes очищен!", amount);
   }
 }
