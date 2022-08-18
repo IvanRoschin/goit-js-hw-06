@@ -20,43 +20,36 @@ const refs = {
   boxesCountainerEl: document.querySelector("#boxes"),
 };
 
-let baseSizes = 20;
-let addValue = 10;
+refs.createBtnEl.addEventListener("click", createBoxes);
+refs.destroyBtnEl.addEventListener("click", onDestroyBtnElClick);
 
-refs.inputEl.addEventListener("input", onInputClick);
+//! Цикл создания div
 
-//! Получаем значение amount
-function onInputClick(event) {
-  let amount = event.currentTarget.value;
+function createBoxes(amount) {
+  amount = refs.inputEl.value;
   console.log("Количество дивов -", amount);
-
+  // let baseSizes = 20;
+  // let addValue = 10;
   const elements = [];
 
-  refs.createBtnEl.addEventListener("click", createBoxes);
-  refs.destroyBtnEl.addEventListener("click", onDestroyBtnElClick);
-
-  //! Цикл создания div
-  function createBoxes() {
-    for (let i = 1; i <= amount; i += 1) {
-      console.log("amount", amount);
-
-      const divEl = document.createElement("div");
-      divEl.style.backgroundColor = getRandomHexColor();
-      divEl.style.width = baseSizes + addValue + `px`;
-      divEl.style.height = baseSizes + addValue + `px`;
-      addValue += 10;
-      console.log("width", divEl.style.width);
-      console.log("height", divEl.style.height);
-      elements.push(divEl);
-    }
-    refs.boxesCountainerEl.append(...elements);
+  for (let i = 1; i <= amount; i += 1) {
+    const divEl = document.createElement("div");
+    divEl.style.backgroundColor = getRandomHexColor();
+    // divEl.style.width = baseSizes + addValue + `px`;
+    // divEl.style.height = baseSizes + addValue + `px`;
+    divEl.style.width = `${30 + i * 10}px`;
+    divEl.style.height = `${30 + i * 10}px`;
+    // addValue += 10;
+    console.log("width", divEl.style.width);
+    console.log("height", divEl.style.height);
+    elements.push(divEl);
   }
+  refs.boxesCountainerEl.append(...elements);
+}
 
-  //! Очищаем div#boxes
-  function onDestroyBtnElClick() {
-    refs.boxesCountainerEl.innerHTML = "";
-    refs.inputEl.value = "";
-
-    console.log("div#boxes очищен!", amount);
-  }
+//! Очищаем div#boxes
+function onDestroyBtnElClick() {
+  refs.boxesCountainerEl.innerHTML = "";
+  refs.inputEl.value = "";
+  console.log("div#boxes очищен!");
 }
